@@ -1,0 +1,21 @@
+{
+  "port": 3000,
+  "slack_host": "slack.com",
+  "aws": {
+    "access_key_id": "YOUR KEY HERE",
+    "secret_access_key": "YOUR SECRET KEY HERE",
+    "region": "us-west-1"
+  },
+  "app": {
+    "verification_token": "APP VERIFICATION TOKEN",
+    "workspace_token": "TOKEN FOR YOUR DEV WORKSPACE"
+  },
+  "table_names": {
+    "team": "lunchbot-team-dev-v1",
+    "user": "lunchbot-user-dev-v1"
+  },
+  "yelp": {
+    "api_key": "YELP API KEY",
+    "graphql_endpoint": "https://api.yelp.com/v3/graphql"
+  }
+}

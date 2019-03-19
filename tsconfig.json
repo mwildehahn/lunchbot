@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "outDir": "out",
+    "sourceMap": true,
+    "strict": true,
+    "lib": ["esnext"]
+  },
+  "include": ["src/**/*"]
+}

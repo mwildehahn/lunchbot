@@ -1,0 +1,53 @@
+{
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "DEBUG=lunchbot:* DEBUG_DEPTH=10 concurrently \"tsc -p . -w\" \"nodemon ./out/web/index.js\"",
+    "terraform:dev": "terraform apply -var-file=terraform/development.tfvars -state=terraform/terraform.tfstate -state-out=terraform/terraform.tfstate terraform",
+    "terraform:init": "terraform init terraform"
+  },
+  "lint-staged": {
+    "*.{ts,json,css}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "@slack/client": "^4.11.0",
+    "@speee-js/jsx-slack": "^0.4.1",
+    "aws-sdk": "^2.423.0",
+    "axios": "^0.18.0",
+    "config": "^3.0.1",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-compose": "^4.1.0",
+    "koa-logger": "^3.2.0",
+    "koa-route": "^3.2.0",
+    "lodash": "^4.17.11",
+    "verror": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/config": "0.0.34",
+    "@types/debug": "^4.1.2",
+    "@types/koa": "^2.0.48",
+    "@types/koa-bodyparser": "^4.2.2",
+    "@types/koa-compose": "^3.2.3",
+    "@types/koa-logger": "^3.1.1",
+    "@types/koa-route": "^3.2.4",
+    "@types/lodash": "^4.14.123",
+    "@types/verror": "^1.10.3",
+    "concurrently": "^4.1.0",
+    "debug": "^4.1.1",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "nodemon": "^1.18.10",
+    "prettier": "^1.16.4",
+    "tslint": "^5.14.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.3.3333"
+  }
+}
