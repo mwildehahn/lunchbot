@@ -10,6 +10,10 @@ const debug = require("debug")("lunchbot:lunchbot");
 export async function search(user: User, query: string): Promise<any> {
   const res = await yelp.search(query, user.preferred_location as string);
 
+  // You can put blocks together in whatever way that makes sense for your app.
+  // Here we build the main items from the search results, then construct a
+  // header and a footer and combine it at the end.
+
   const items = res.data.search.business.slice(0, 5).map((biz: any) => [
     {
       type: "section",
@@ -66,7 +70,12 @@ export async function search(user: User, query: string): Promise<any> {
         },
         {
           type: "button",
+          // Use `action_id` to trigger a specific behavior when the user clicks the button
           action_id: ActionIds.UPDATE_LOCATION,
+          // Store additional information you might need within the `value`. In
+          // this case, we pass the original `query` so we can search it again
+          // after the user submits the dialog.
+          value: query,
           text: {
             type: "plain_text",
             text: "Change Location"
@@ -76,5 +85,6 @@ export async function search(user: User, query: string): Promise<any> {
     }
   ];
 
+  // We return a single array of blocks here
   return header.concat(flatten(items)).concat(footer);
 }

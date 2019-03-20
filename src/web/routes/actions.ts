@@ -86,6 +86,9 @@ async function handleBlockActions(payload: BlockActionsPayload): Promise<void> {
 
   const user = await getOrCreateUser({ id: userId, team_id: teamId });
 
+  // Block actions come as an array of actions. For now, there is only ever 1
+  // action sent at a time, but this might change in the future.
+
   const promises = payload.actions.map(async action => {
     switch (action.action_id) {
       case ActionIds.UPDATE_LOCATION:
